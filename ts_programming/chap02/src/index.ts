@@ -48,3 +48,8 @@ console.log('Hello TS')
 // let j = i.a + i.b
 // let k = i.a + 4
 // console.log('j:', j, ', k:', k)
+
+// function func(a:number, b:String) {
+//     return a + b
+// }
+// console.log(func(1,2), func('a', 'b'), func('a', 2), func(3, 'b'), func(1,[2]))
