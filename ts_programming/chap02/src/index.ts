@@ -1,5 +1,7 @@
-/* Chapter 01 */
+console.log('Hello TS')
+/*****************  Chapter 01 *****************/
 
+///// p. 2
 // 3 + []
 
 // let obj = {}
@@ -10,8 +12,22 @@
 // }
 // a("z")
 
-/* Chapter 02 */
+/*****************  Chapter 02 *****************/
 
+///// p. 8
+// let a: number = 1
+// let b: string = 'hello'
+// let c: boolean[] = [true, false]
+
+// let a = 1               // number
+// let b = 'hello'         // string
+// let c = [true, false]   // boolean 배열
+///// p. 10
+// 3 + [1];
+// (3).toString() + [1].toString()
+
+
+///// p. 17
 // let a = 1 + 2
 // let b = a + 3
 // let c = {
@@ -32,4 +48,3 @@
 // let j = i.a + i.b
 // let k = i.a + 4
 // console.log('j:', j, ', k:', k)
-
