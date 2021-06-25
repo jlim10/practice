@@ -1,11 +1,17 @@
 console.log('Hello JS')
 
-console.log(3 + [])
+// 3 + []      // 문자열 "3"
 
-let obj = {}
-console.log(obj.foo)
+// let obj = {}
+// obj.foo     // undefined
 
-function a(b) {
-    return b/2
+// function a(b) {
+//     return b/2
+// }
+// a("z")      // NaN
+
+function func (a, b){
+    return a+b
 }
-console.log(a("z"))
+
+console.log(func(1,2), func('a', 'b'), func('a', 2), func(3, 'b'), func(1,[2]))
