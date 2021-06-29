@@ -465,3 +465,25 @@ console.log('Chapter 03')
 //     return 'flipped it'
 // }
 // console.log(flip(Flippable.Chair), flip(Flippable.Cup), flip(12))
+
+///// p. 52
+// let a = 1042
+// let b = 'apples and orages'
+// const c = 'pineapples'
+// let d = [true, true, false]
+// let e = {type: 'ficus'}
+// e = {type: 'gg'}
+// let f = [1, false]
+// const g = [3]
+// let h = null
+
+// let i: 3 = 3
+// //i = 4
+
+// let j = [1, 2, 3]
+// j.push(4)
+// //j.push('5')
+
+//let k: never = 4
+// let l: unknown = 4
+// //let m = l * 2
