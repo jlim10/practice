@@ -123,6 +123,11 @@ console.log('Chapter 03')
 // console.log(a, b, c, e, e.valueOf(), e.toString(), d, c.valueOf())
 
 ///// p. 29
+// let a: object = {
+//     b: 'x'
+// }
+// a.b
+
 // let a = {
 //     b: 'x',
 //     c: 5
@@ -161,6 +166,11 @@ console.log('Chapter 03')
 // c = new Person('matt', 'smith')
 // console.log(c)
 
+// let a: { b: number }
+// a = {}
+// a = { b: 1 }
+// a = { b: 1, c: 2 }
+
 // let a: {
 //     b: number
 //     c?: string
@@ -188,15 +198,15 @@ console.log('Chapter 03')
 // }
 // console.log(a3['backNum'], a3['Temp'], a3['Hello'])
 
-// let a4: {
+// let name: {
 //     readonly lName: string
 //     fName: string
-//     [key: number]: number
 // } = {
 //     lName: 'Lim',
 //     fName: 'JH'
 // }
-// console.log(a4)
+// name.lName = 'Kim'
+// name.fName = 'SY'
 
 // a4 = {
 //     lName: 'Lee',
@@ -210,11 +220,8 @@ console.log('Chapter 03')
 
 // let danger: {}
 // danger = {}
-// console.log(danger)
 // danger = {x:1}
-// console.log(danger)
 // danger = []
-// console.log(danger)
 // danger = 2
 // console.log(danger)
 
@@ -317,6 +324,21 @@ console.log('Chapter 03')
 //     barks: true,
 //     wags: false
 // }
+
+// function trueOrNull(isTrue: boolean) {
+//     if (isTrue) {
+//         return 'true'
+//     }
+//     return null
+// }
+// type Returns = string | null
+// let ret: Returns = trueOrNull(true)
+
+// function strORNum(a: string, b: number) {
+//     return a || b
+// }
+// type Returns = string | number
+// let ret: Returns = strORNum('a', 1)
 
 // let c: number[] | string | boolean[] | null = [1, 2]
 // let d: (number | string)[] = [1, 'aa']
@@ -478,12 +500,13 @@ console.log('Chapter 03')
 // let h = null
 
 // let i: 3 = 3
-// //i = 4
+// i = 4
 
 // let j = [1, 2, 3]
 // j.push(4)
-// //j.push('5')
+// j.push('5')
 
-//let k: never = 4
+// let k: never = 4
+
 // let l: unknown = 4
-// //let m = l * 2
+// let m = l * 2
