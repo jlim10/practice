@@ -1,3 +1,12 @@
+# dependencies
+/ts_programming/chap02/node_modules
+/ts_programming/chap03/node_modules
+/ts_programming/node_modules
+
+#yarn
+/ts_programming/yarn-debug.log
+/ts_programming/yarn-error.log
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
