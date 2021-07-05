@@ -8,6 +8,6 @@
         "target": "es2020"
     },
     "include": [
-        "chap04/src"
+        "chap03/src"
     ]
 }
