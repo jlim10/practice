@@ -1,3 +1,5 @@
+import { allowedNodeEnvironmentFlags } from "process"
+
 console.log('Hello TS')
 /*****************  Chapter 01 *****************/
 
