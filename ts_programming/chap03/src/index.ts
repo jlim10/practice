@@ -22,7 +22,7 @@ console.log('Chapter 03')
 // let c = a + b
 // console.log(c)
 
-///// p. 23
+///// p. 23 // 확인
 // let a: unknown = 30
 // let b = a === 123
 // //let c = a + 10
@@ -82,7 +82,7 @@ console.log('Chapter 03')
 // let twoMil : 2_000_000 = 2000000
 // console.log(a, b, c, d, e, f, oneMil, twoMil)
 
-// let a = 1234n
+// let a = 1234n // type casting 확인
 // const b = 5678n
 // var c = a+b
 // let d = a < 1235
@@ -139,6 +139,7 @@ console.log('Chapter 03')
 //     }
 // }
 // b.c.d
+
 
 // let a: { b: number } = {
 //     b: 12 
