@@ -9,18 +9,19 @@ console.log('Chapter 04: Function')
 // function add2(a: number, b:number): number{
 //     return a + b
 // }
-// function greet(name: string) {
+
+// function greet(name: string) {              // 1. 이름을 붙인 함수
 //     return 'hello ' + name
 // }
-// let greet2 = function (name: string) {
+// let greet2 = function (name: string) {      // 2. 함수 표현식
 //     return 'hello ' + name
 // }
-// let greet3 = (name: string) => {
+// let greet3 = (name: string) => {            // 3. 화살표 함수 표현식
 //     return 'hello ' + name
 // }
-// let greet4 = (name: string) =>
+// let greet4 = (name: string) =>              // 4. 단축형 화살표 함수 표현식
 //     'hello ' + name
-// let greet5 = new Function('name', 'return "hello" + name')
+// let greet5 = new Function('name', 'return "hello" + name')  // 5. 함수 생성자
 
 ///// p. 58 // 4.1.1 선택적 매개변수와 기본 매개변수
 // function log(message: string, userId?: string) {
@@ -52,12 +53,28 @@ console.log('Chapter 04: Function')
 // function sum(numbers:number[]): number {
 //     return numbers.reduce((total, n) => total + n, 0)
 // }
-// console.log(sum([1, 2, 3, 4]))
+// console.log(sum([1, 2, 3]))
 
-// function sumVariadic(...numbers: number[]): number {
-//     return Array.from(arguments).reduce((total, n) => total + n, 0)
+// function sumVariadic(): number {
+//     return Array
+//     .from(arguments)
+//     .reduce((total, n) => total + n, 0)
 // }
 // sumVariadic(1, 2, 3, 4)
+
+// function sumVariadic(...numbers: number[]): number {
+//     console.log(numbers, arguments, typeof arguments)
+//     return Array
+//     .from(arguments)
+//     .reduce((total, n) => total + n, 0)
+// }
+// console.log(sumVariadic(1, 2, 3, 4))
+
+// function sumVariadic(...numbers: number[]): number {
+//     console.log(numbers, arguments, typeof arguments, Array.from(arguments))
+//     return numbers.reduce((total, n) => total + n, 0)
+// }
+// console.log(sumVariadic(1, 2, 3, 4))
 
 // interface Console {
 //     log(message?: any, ...optionalParams: any[]): void
@@ -67,21 +84,35 @@ console.log('Chapter 04: Function')
 // function add(a: number, b:number): number{
 //     return a + b
 // }
-// console.log(add(10, 20), add.apply(null, [10, 20]), add.call(null, 10, 20), add.bind(null, 10, 20)())
+// console.log(add(10, 20))
+// console.log(add.apply(null, [10, 20]))
+// console.log(add.call(null, 10, 20))
+// console.log(add.bind(null, 10, 20))
 
 // let x = {
 //     a() {
 //         return this
 //     }
 // }
-// let a = x.a
-// console.log(a, x.a, x.a())
+// console.log('x.a: ', x.a, ', x,a(): ', x.a(), ', x: ', x)
+// let b = x.a
+// console.log('b: ', b, ', b(): ', b())
+// let y = {
+//     c: x.a
+// }
+// console.log('y.c: ', y.c, ', y.c(): ', y.c(), ', y: ', y)
+
+// function fancyDate() {
+//     return ${ this.getDate() } /${this.getMonth()}/${ this.getFullYear() } // Expression Language 에러발생
+// }
 
 // function fancyDate(this: Date) {
-//     return ${ this.getDate() } /${this.getMonth()}/${ this.getFullYear() }
+//     return this.getDate().toString() + '/' + this.getMonth().toString() + '/' + this.getFullYear().toString()
+//     //return ${ this.getDate() } /${this.getMonth()}/${ this.getFullYear() } // Expression Language 에러발생
 // }
-// fancyDate.call(new Date)
+// console.log(fancyDate.call(new Date))
 // fancyDate()
+
 
 // function* createFibonacciGenerator() {
 //     let a = 0
@@ -92,7 +123,15 @@ console.log('Chapter 04: Function')
 //     }
 // }
 // let fibonacciGenerator = createFibonacciGenerator()
-// console.log(fibonacciGenerator.next(), fibonacciGenerator.next(), fibonacciGenerator.next(), fibonacciGenerator.next(), fibonacciGenerator.next(), fibonacciGenerator.next())
+// console.log(
+//     fibonacciGenerator.next(),
+//     fibonacciGenerator.next(),
+//     fibonacciGenerator.next(),
+//     fibonacciGenerator.next(),
+//     fibonacciGenerator.next(),
+//     fibonacciGenerator.next(),
+//     fibonacciGenerator.next()
+// )
 
 // function* createNumbers(): IterableIterator<number> {
 //     let n = 0
@@ -112,11 +151,36 @@ console.log('Chapter 04: Function')
 //     }
 // }
 // for (let a of numbers){
+//     console.log(a)
 // }
 // let allNumbers = [...numbers]
 // let [one, two, ...rest] = numbers
+// let [one1, two2] = numbers
+// console.log(allNumbers, one, two, one1, two2, rest)
+
 
 ///// p. 67 // 4.1.7 호출 시그니처
+// function sum(a: number, b:number): number { return a + b }
+// function sub(a: number, b:number): number { return a - b }
+// function mul(a: number, b:number): number { return a * b }
+// function div(a: number, b:number): number { return a / b }
+
+// type Operations = (a: number, b: number) => number
+
+// let sum2: Operations = (a, b) => {
+//     return a + b
+// }
+// let sub2: Operations = (a, b) => {
+//     return a - b
+// }
+// let mul2: Operations = (a, b) => {
+//     return a * b
+// }
+// let div2: Operations = (a, b) => {
+//     return a / b
+// }
+// console.log(sum2(1,2), sub2(19,13), mul2(7,8), div2(10, 5))
+
 // function area(radius: number): number | null {
 //     if (radius < 0) {
 //         return null
@@ -129,17 +193,44 @@ console.log('Chapter 04: Function')
 //     console.info('result:', a)
 // }
 
-// type Greet = (name: string) => string
+// function log1(message: string, userId?: string) {
+//     let time = new Date().toLocaleTimeString()
+//     console.log(time, message, userId || 'Not signed in')
+// }
+
+// function log2(message: string, userId = 'Not signed in') {
+//     let time = new Date().toLocaleTimeString()
+//     console.log(time, message, userId)
+// }
+
 // type Log = (message: string, userId?: string) => void
-// let log: Log = (
+
+// let log11: Log = (
+//     message,
+//     userId?
+// ) => {
+//     let time = new Date().toISOString()
+//     console.log(time, message, userId || 'Not signed in')
+// }
+
+// let log22: Log = (
 //     message,
 //     userId = 'Not signed in'
 // ) => {
 //     let time = new Date().toISOString()
 //     console.log(time, message, userId)
 // }
-// log('Hello', 'jlim10')
+
+// type Greet = (name: string) => string
+// let greet: Greet = (name) => {
+//     return 'Hello' + name
+// }
+
 // type SumVariadicSafe = (...numbers: number[]) => number
+// let sumVariadicSafe: SumVariadicSafe = (...numbers) => {
+//     return numbers.reduce((total, n) => total+n, 0)
+// }
+// console.log(sumVariadicSafe(4,2,3,7))
 
 ///// p. 70 // 4.1.8 문맥적 타입화
 // function times(
@@ -150,7 +241,13 @@ console.log('Chapter 04: Function')
 //         f(i)
 //     }
 // }
-// times(n => console.log(n), 4)
+// times(n =>console.log(n), 4)
+// times(console.log, 4)
+
+// function f(n: number) {
+//     console.log(n)
+// }
+// times(f, 4)
 
 ///// p. 71 // 4.1.9 오버로드된 함수 타입
 // type Log = (message: string, userId?: string) => void
@@ -162,8 +259,39 @@ console.log('Chapter 04: Function')
 //     (from: Date, to: Date, destination: string): Reservation
 // }
 // let reserve: Reserve = (from, to, destination) => {
-//     //...
+//     // ...
 // }
+
+// type Reservation = void
+
+// type Reserve = {
+//     (from: Date, to: Date, destination: string): Reservation
+//     (from: Date, destination: string): Reservation
+// }
+// let reserve: Reserve = (from, to) => {
+//     // ...
+// }
+
+// let reserve: Reserve = (
+//     from: Date,
+//     toOrDestination: Date | string,
+//     destination?: string) => {
+//         // ...
+// }
+
+// type Reserve1 = {
+//     (from: Date, to: Date, destination: string): Reservation
+// }
+// type Reserve2 = {
+//     (from: Date, destination: string): Reservation
+// }
+// type ReserveUnion = Reserve1 | Reserve2
+
+// let reserve2: ReserveUnion = (from, toOrDestination, desination) => {
+//     // ...
+// }
+
+// type Reservation = [Date, Date | string, string?]
 
 // type Reserve = {
 //     (from: Date, to: Date, destination: string): Reservation
@@ -175,20 +303,23 @@ console.log('Chapter 04: Function')
 //     destination?: string
 //     ) => {
 //     if (toOrDestination instanceof Date && destination !== undefined) {
-//         //편도 예약
+//         // ...
 //     }
 //     else if ( typeof toOrDestination === 'string') {
-//         // 왕복 예약
+//         // ...
 //     }
 // }
+// type Reservation = void
 
-// let reserve: Reserve = (
+// let reserve2: Reserve = (
 //     from: any,
 //     toOrDestination: any,
 //     destination?: any
 //     ) => {
 //     // ...
 // }
+// reserve2(new Date, new Date, 'Seoul')
+// reserve2(new Date, 'Seoul')
 
 // function getMonth(date: any): number | undefined {
 //     if (date instanceof Date) {
@@ -203,17 +334,18 @@ console.log('Chapter 04: Function')
 //     (tag: 'a'): HTMLAnchorElement
 //     (tag: 'canvas'): HTMLCanvasElement
 //     (tag: 'table'): HTMLTableElement
-//     (tag: 'string'): HTMLElement
+//     (tag: string): HTMLElement
 // }
 // let createElement: CreateElement = (tag: string): HTMLElement => {
 //     // ...
+//     return new HTMLElement
 // }
-// function createElement(tag: 'a'): HTMLAnchorElement
-// function createElement(tag: 'canvas'): HTMLCanvasElement
-// function createElement(tag: 'table'): HTMLTableElement
-// function createElement(tag: 'string'): HTMLElement {}
+// function createElement2(tag: 'a'): HTMLAnchorElement
+// function createElement3(tag: 'canvas'): HTMLCanvasElement
+// function createElement4(tag: 'table'): HTMLTableElement
+// function createElement5(tag: 'string'): HTMLElement {}
 
-// function warnUser(warning) {
+// function warnUser(warning: string) {
 //     if(warnUser.wasCalled) {
 //         return
 //     }
@@ -226,6 +358,17 @@ console.log('Chapter 04: Function')
 //     (warning: string): void
 //     wasCalled: boolean
 // }
+// let warnUser2: WarnUser = (warning) => {
+//     if(warnUser2.wasCalled) {
+//         return
+//     }
+//     warnUser2.wasCalled = true
+//     alert(warning)
+// }
+// warnUser2.wasCalled = false
+// let warnUser2: WarnUser
+// warnUser2 = (warning) => {warnUser2.wasCalled = true}
+// warnUser2.wasCalled = false
 
 ///// p. 78 4.2 다형성
 
