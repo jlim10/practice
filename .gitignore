@@ -2,6 +2,9 @@
 /ts_programming/chap02/node_modules
 /ts_programming/chap03/node_modules
 /ts_programming/node_modules
+/js_programming/node_modules
+/excalidraw/node_modules
+/excalidraw-master/node_modules
 
 #yarn
 /ts_programming/yarn-debug.log
