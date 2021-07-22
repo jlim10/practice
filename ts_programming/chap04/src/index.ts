@@ -1,4 +1,5 @@
 import { allowedNodeEnvironmentFlags } from "process"
+import { mapDefined } from "tslint/lib/utils"
 
 console.log('Chapter 04: Function')
 
@@ -382,12 +383,22 @@ console.log('Chapter 04: Function')
 //     }
 //     return result
 // }
-// filter([1, 2, 3, 4], _ => _ < 3)
+// filter([1, 2, 3, 4], _ => _ < 3)    // [1, 2]
 
 // type Filter = {
 //     (array: number[], f: (item: number) => boolean): number[]
 //     (array: string[], f: (item: string) => boolean): string[]
 //     (array: object[], f: (item: object) => boolean): object[]
+// }
+
+// let filter: Filter = (array, f) => {
+//     let result = []
+//     for (let i = 0; i < array.length; i++){
+//         if (f(array[i])) {
+//             result.push(array[i])
+//         }
+//     }
+//     return result
 // }
 
 // let names = [
@@ -406,18 +417,27 @@ console.log('Chapter 04: Function')
 // type Filter = {
 //     <T>(array: T[], f: (item: T) => boolean): T[]
 // }
-// let filter: Filter = (array, f) => //...
 
-// filter([1,2,3], _ => _ > 2)
+// let filter: Filter = (array, f) => {
+//     let result = []
+//     for (let i = 0; i < array.length; i++){
+//         if (f(array[i])) {
+//             result.push(array[i])
+//         }
+//     }
+//     return result
+// }
 
-// filter(['a', 'b'], _ => _ !== 'b')
+// console.log(filter([1,2,3], _ => _ > 2))
+
+// console.log(filter(['a', 'b'], _ => _ !== 'b'))
 
 // let names = [
 //     { firstName: 'beth' },
 //     { firstName: 'caitlyn' },
 //     { firstName: 'xin' }
 // ]
-// filter(names, _ => _.firstName.startsWith('b'))
+// console.log(filter(names, _ => _.firstName.startsWith('b')))
 
 ///// p.83 // 4.2.1 언제 제네릭 타입이 한정되는가?
 // type Filter = {
@@ -428,11 +448,19 @@ console.log('Chapter 04: Function')
 // type Filter<T> = {
 //     (array: T[], f: (item: T) => boolean): T[]
 // }
-// let filter: Filter = (array, f) => //...
+
+// let filter: Filter = (array, f) => {
+//     let result = []
+//     for (let i = 0; i < array.length; i++){
+//         if (f(array[i])) {
+//             result.push(array[i])
+//         }
+//     }
+//     return result
+// }
 
 // type OtherFilter = Filter
 
-// let filter: Filter<number> = (array, f) => // ...
 // type StringFilter = Filter<string>
 // let stringFilter: StringFilter = (array, f) => // ...
 
@@ -454,7 +482,7 @@ console.log('Chapter 04: Function')
 // let filter: Filter<string> = (array, f) => //...
 
 // function filter<T>(array: T[], f: (item: T) => boolean): T[] {
-//     //...
+//     return []
 // }
 
 // function map(array: unknown[], f: (item: unknown) => unknown): unknown[] {
@@ -531,7 +559,7 @@ console.log('Chapter 04: Function')
 //     type: string
 // }
 // type ButtonEvent = MyEvent<HTMLButtonElement>
-// let myEvent: Event<HTMLButtonElement | null> = {
+// let myEvent: MyEvent<HTMLButtonElement | null> = {
 //     target: document.querySelector('#myButton'),
 //     type: 'click'
 // }
@@ -578,6 +606,7 @@ console.log('Chapter 04: Function')
 //         value: f(node.value)
 //     }
 // }
+// console.log(a1, b1, c1)
 
 // type HasSides = { numberOfSides: number }
 // type SidesHaveLength = { sideLength: number }
@@ -604,6 +633,15 @@ console.log('Chapter 04: Function')
 
 // console.log(call(fill, 10, 'a'))
 
+// function call2<T,U>(
+//     f: (...args: T[]) => U,
+//     ...args: T[]
+// ):U {
+//     return f(...args)
+// }
+// console.log(call2(fill, 10, 'a'))
+
+
 // function call<T extends unknown[], R>(
 //     f: (...args: T) => R,
 //     ...args: T
@@ -620,10 +658,7 @@ console.log('Chapter 04: Function')
 //     type: string
 // }
 
-// type ButtonEvent: MyEvent<HTMLButtonElement> = {
-//     target: myButton,
-//     type: string
-// }
+// let buttonEvent: MyEvent<HTMLButtonElement>
 
 // type MyEvent<T = HTMLElement> = {
 //     target: T
